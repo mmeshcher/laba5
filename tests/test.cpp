@@ -43,7 +43,7 @@ TEST(Stack1_base, Constructors) {
     s.push(std::move(5678));
     EXPECT_EQ(s.head(), 5678);
     SimpleStack<int> z(std::move(9876));
-    EXPECT_EQ(z.head(),9876);
+    EXPECT_EQ(z.head(), 9876);
 }
 
 TEST(Stack1_advanced, Move) {

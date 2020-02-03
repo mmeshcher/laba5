@@ -13,7 +13,7 @@ class Stack
     struct Node {
         T data;
         Node* next = nullptr;
-        Node(T&& arg) {    data = std::forward<T>(arg); }
+        explicit Node(T&& arg) {    data = std::forward<T>(arg); }
         static Node* create(T&& arg, Node* pointer) {
             Node* n = new Node(std::forward<T>(arg));
             n->next = pointer;
@@ -32,7 +32,7 @@ class Stack
 
 public:
     Stack() {}
-    Stack(T&& value) {
+     explicit Stack(T&& value) {
         push(std::forward<T>(value));
     }
     Stack(Stack&& r) {

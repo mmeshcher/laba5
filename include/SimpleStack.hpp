@@ -13,8 +13,8 @@ class SimpleStack
     struct Node {
         T data;
         Node* next = nullptr;
-        Node(T& arg) { data = arg; }
-        Node(T&& arg) {    data = std::move(arg); }
+        explicit Node(T& arg) { data = arg; }
+        explicit Node(T&& arg) {    data = std::move(arg); }
         static Node* create(const T& arg, Node* pointer) {
             Node* n = new Node(arg);
             n->next = pointer;
@@ -38,10 +38,10 @@ class SimpleStack
 
 public:
     SimpleStack() {}
-    SimpleStack(T&& value) {
+    explicit SimpleStack(T&& value) {
         push(std::move(value));
     }
-    SimpleStack(const T& value) {
+    explicit SimpleStack(const T& value) {
         push(value);
     }
     SimpleStack(SimpleStack&& r) {
