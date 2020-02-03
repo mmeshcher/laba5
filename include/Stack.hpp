@@ -60,7 +60,7 @@ public:
         delete temp;
         return t;
     }
-    const T& head() const { 
+    const T& head() const {
         if (top == nullptr) throw std::logic_error{ "The stack is empty!" };
         return top->data;
     }
