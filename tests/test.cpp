@@ -56,12 +56,6 @@ TEST(Stack1_advanced, Move) {
     EXPECT_TRUE(!z);
 }
 
-TEST(Stack1_advanced, Self) {
-    SimpleStack<int> s(1234);
-    s = std::move(s);
-    EXPECT_EQ(s.head(), 1234);
-}
-
 TEST(Stack1_advanced, Except) {
     bool flag = false;
     SimpleStack<int> s;
@@ -119,14 +113,6 @@ TEST(Stack2_advanced, Move) {
     EXPECT_EQ(p.head().head(), 1234);
     r = std::move(p);
     EXPECT_TRUE(!p);
-    EXPECT_EQ(r.head().head(), 1234);
-}
-
-TEST(Stack2_advanced, Self) {
-    SimpleStack<int> s;
-    s.push(1234);
-    Stack<SimpleStack<int>> r(std::move(s));
-    r = std::move(r);
     EXPECT_EQ(r.head().head(), 1234);
 }
 

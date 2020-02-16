@@ -13,7 +13,7 @@ class Stack
     struct Node {
         T data;
         Node* next = nullptr;
-        explicit Node(T&& arg) {    data = std::forward<T>(arg); }
+        explicit Node(T&& arg) {    data = std::forward<T>(arg); }//???
         static Node* create(T&& arg, Node* pointer) {
             Node* n = new Node(std::forward<T>(arg));
             n->next = pointer;
@@ -48,8 +48,8 @@ public:
     void push(T&& value) { top = Node::create(std::forward<T>(value), top);}
     template<typename ... Args>
     void push_emplace(Args&& ...value) {
-        T object_brrrrr{ std::forward<Args>(value)... };
-        top = Node::create(std::move(object_brrrrr), top);
+        T object_b{ std::forward<Args>(value)... };
+        top = Node::create(std::move(object_b), top);
     }
     T pop() {
         if (top == nullptr) throw std::logic_error{ "The stack is empty!" };
