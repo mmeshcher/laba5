@@ -13,7 +13,7 @@ struct for_emplace {
     for_emplace(std::string p, int r) {
         a = r;
         s = p;
-    }
+    } 
     for_emplace(for_emplace&& r) {
         a = r.a;
         s = std::move(r.s);
@@ -91,17 +91,6 @@ TEST(Stack2_base, emplace) {
     tester.push_emplace("hello", 90);
     EXPECT_EQ(tester.head().a, 90);
     EXPECT_EQ(tester.head().s, std::string("hello"));
-}
-
-TEST(Stack2_base, Constructors) {
-    SimpleStack<int> s;
-    SimpleStack<int> s1;
-    s.push(1234);
-    s1.push(3456);
-    Stack<SimpleStack<int>> r(std::move(s));
-    EXPECT_EQ(r.head().head(), 1234);
-    r.push(std::move(s1));
-    EXPECT_EQ(r.head().head(), 3456);
 }
 
 TEST(Stack2_advanced, Move) {
