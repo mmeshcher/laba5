@@ -11,13 +11,13 @@ template <typename T>
 class SimpleStack
 {
     struct Node {
-        T data;
-        Node* next = nullptr;
-        explicit Node(T& arg) { data = arg; }
-        explicit Node(T&& arg) {    data = std::move(arg); }
+        T data;// хранится значение
+        Node* next = nullptr;// указатель на следуюший элемент
+        explicit Node(T& arg) { data = arg; }//T& является lvalue
+        explicit Node(T&& arg) {    data = std::move(arg); }//T&& является rvalue
         static Node* create(const T& arg, Node* pointer) {
             Node* n = new Node(arg);
-            n->next = pointer;
+            n->next = pointer;//обращение к полям при работе с указателем на объект
             return n;
         }
         static Node* create(T&& arg, Node* pointer) {
@@ -32,8 +32,9 @@ class SimpleStack
             }
         }
     };
-    SimpleStack(const SimpleStack& a) {}
-    void operator=(const SimpleStack& a) {}
+
+   // SimpleStack(const SimpleStack& a) {}
+    //void operator=(const SimpleStack& a) {}
     Node* top = nullptr;
 
 public:
@@ -50,7 +51,7 @@ public:
     }
     void operator=(SimpleStack&& r) {
         if (this == &r) return;
-        ~SimpleStack();
+        //~SimpleStack();
         top = r.top;
         r.top = nullptr;
     }

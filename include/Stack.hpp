@@ -26,8 +26,8 @@ class Stack
             }
         }
     };
-    Stack(const Stack& a) {}
-    void operator=(const Stack& a) {}
+   // Stack(const Stack& a) {}
+    //void operator=(const Stack& a) {}
     Node* top = nullptr;
 
 public:
@@ -41,7 +41,7 @@ public:
     }
     void operator=(Stack&& r) {
         if (this == &r) return;
-        ~Stack();
+       // ~Stack();
         top = r.top;
         r.top = nullptr;
     }

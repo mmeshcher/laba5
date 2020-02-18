@@ -46,14 +46,26 @@ TEST(Stack1_base, Constructors) {
     EXPECT_EQ(z.head(), 9876);
 }
 
+/*
+
+    struct A
+    {
+        int x;
+        string y;
+    }
+    
+    pushiijgjsjgfsd(string, int)
+    T a { 2, "fdfds" };
+
+    decltype<_T> == typeof(value)
+
+*/
+
 TEST(Stack1_advanced, Move) {
     SimpleStack<int> s(1234);
     SimpleStack<int> z(std::move(s));
     EXPECT_EQ(z.head(), 1234);
     EXPECT_TRUE(!s);
-    s = std::move(z);
-    EXPECT_EQ(s.head(), 1234);
-    EXPECT_TRUE(!z);
 }
 
 TEST(Stack1_advanced, Except) {
@@ -81,9 +93,6 @@ TEST(Stack2_base, push_pop_head) {
     r.push(std::move(s1));
     EXPECT_EQ(r.head().head(), 3456);
     EXPECT_TRUE(!s);
-    s = std::move(r.pop());
-    EXPECT_EQ(r.head().head(), 1234);
-    EXPECT_EQ(s.head(), 3456);
 }
 
 TEST(Stack2_base, emplace) {
